@@ -1,0 +1,17 @@
+与上一题一样，对下面程序进行分析。这段程序比上一题的程序更复杂，你可以通过本例对动态、静态、虚函数等概念有更深入的了解。
+此外，针对"f"函数，你可以区分出重载"overloading"和重写"overwriting"；针对"g"函数，本段程序实现了重写"overwriting"和缺省值的结合。此题以说明文档形式作答。
+
+Base::f(double)
+//对Base类型对象调用f参数为double，精确匹配Base::f(double)
+Derived::f(Complex)
+//对Derived类型对象调用f参数为double，首先在Derived中寻找名字f，只找到Derived::f(Complex)[Base::f(int)，Base::f
+(double)被隐藏]，其又可行所以调用。
+Base::f(double)
+//通过Base*指针对Derived类型对象调用f参数为double，通过虚函数机制找到可行函数Base::f(int)，Base::f
+(double)，Derived::f(Complex)，由参数匹配确定最佳可行函数Base::f(double)
+Base::g(int = 10)
+//对Base类型对象调用g,使用缺省参数10
+Derived::g(int = 20)
+//对Derived类型对象调用g,使用缺省参数20
+Derived::g(int = 10)
+//通过Base*指针对Derived类型对象调用g，通过虚函数机制确定调用Derived::g(),但一个虚函数调用使用的缺省参数由指向对象的指针或引用的明显类型决定（see：Working Draft, Standard for Programming Language C++（N4296） 8.3.6.10），故为10
