@@ -7,6 +7,8 @@ open an issue, i will try to fix it.
 
 Some of the answers require c++11 features, you may need to configure your compiler.
 
+I did not complete the answer of the final exam during the exam. I completed it after the exam, so it is not well tested. There can be some bugs.
+
 [Note: There are still some homework missing.]
 
 也许这门课之后就没有了，真是令人遗憾。
